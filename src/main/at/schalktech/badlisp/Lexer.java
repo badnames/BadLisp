@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class Lexer implements Iterator<Token> {
 
-    private String source;
+    private final String source;
     private int index = 0;
 
     public Lexer(String source) {
