@@ -28,7 +28,9 @@ public class Lexer implements Iterator<Token> {
             while(source.charAt(index) != '\n')
                 index++;
             incrementUntilFalse(Character::isWhitespace);
-        } else if (source.charAt(index) == '#'
+        }
+
+        if (source.charAt(index) == '#'
                 && source.charAt(index + 1) == '|') {
             index += 2;
 
@@ -36,11 +38,12 @@ public class Lexer implements Iterator<Token> {
                     && source.charAt((index + 1)) != '#')
                 index++;
 
-            // skip over the remaining '#' character
-            index ++;
+            // skip over the remaining "|#" sequence
+            index += 2;
             incrementUntilFalse(Character::isWhitespace);
         }
 
+        // filter out one token at a time
         if (source.charAt(index) == '(') {
             token = new Token(TokenType.LIST_START, index, index + 1, source);
             index++;
@@ -84,7 +87,7 @@ public class Lexer implements Iterator<Token> {
         else {
             int startIndex = index;
 
-            incrementUntilFalse((c) -> !Character.isWhitespace(c));
+            incrementUntilFalse(Lexer::allowedInSymbol);
 
             token = new Token(TokenType.SYMBOL, startIndex, index, source);
         }
@@ -112,6 +115,14 @@ public class Lexer implements Iterator<Token> {
         if (value) index++;
 
         return value;
+    }
+
+    private static boolean allowedInSymbol(char c) {
+        return !Character.isWhitespace(c)
+                && c != '('
+                && c != ')'
+                && c != ';'
+                && c != '#';
     }
 
 }

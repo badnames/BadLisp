@@ -82,4 +82,25 @@ public class LexerTest {
         assertEquals(token.getContent(), "123.456e789");
         assertEquals(token.getType(), TokenType.NUMBER);
     }
+
+    @Test
+    public void testComments() {
+        Lexer lexer = new Lexer("; Inline comment \n #|\n Multi Line\n|# (test)");
+
+        Token token;
+        assertTrue(lexer.hasNext());
+        token = lexer.next();
+        assertEquals(token.getContent(), "(");
+        assertEquals(token.getType(), TokenType.LIST_START);
+
+        assertTrue(lexer.hasNext());
+        token = lexer.next();
+        assertEquals(token.getContent(), "test");
+        assertEquals(token.getType(), TokenType.SYMBOL);
+
+        assertTrue(lexer.hasNext());
+        token = lexer.next();
+        assertEquals(token.getContent(), ")");
+        assertEquals(token.getType(), TokenType.LIST_END);
+    }
 }
