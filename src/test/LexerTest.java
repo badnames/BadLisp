@@ -103,4 +103,25 @@ public class LexerTest {
         assertEquals(token.getContent(), ")");
         assertEquals(token.getType(), TokenType.LIST_END);
     }
+
+    @Test
+    public void testTrailingWhitespace() {
+        Lexer lexer = new Lexer("(test)  \n\t\t  ");
+
+        Token token;
+        assertTrue(lexer.hasNext());
+        token = lexer.next();
+        assertEquals(token.getContent(), "(");
+        assertEquals(token.getType(), TokenType.LIST_START);
+
+        assertTrue(lexer.hasNext());
+        token = lexer.next();
+        assertEquals(token.getContent(), "test");
+        assertEquals(token.getType(), TokenType.SYMBOL);
+
+        assertTrue(lexer.hasNext());
+        token = lexer.next();
+        assertEquals(token.getContent(), ")");
+        assertEquals(token.getType(), TokenType.LIST_END);
+    }
 }
