@@ -14,6 +14,7 @@ public class Lexer implements Iterator<Token> {
 
     @Override
     public boolean hasNext() {
+        incrementUntilFalse(Character::isWhitespace);
         return index < source.length();
     }
 
@@ -22,6 +23,10 @@ public class Lexer implements Iterator<Token> {
         Token token;
 
         incrementUntilFalse(Character::isWhitespace);
+
+        //prevent IndexOutOfBoundsExceptions when hasNext() has not been called.
+        if (index >= source.length())
+            return null;
 
         //ignore comments
         if (source.charAt(index) == ';') {
