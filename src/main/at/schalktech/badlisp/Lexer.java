@@ -110,10 +110,6 @@ public class Lexer implements Iterator<Token> {
             index++;
     }
 
-    private boolean checkAndIncrement(CharChecker checker) {
-        return (index < source.length()) && checker.check(source.charAt(index++));
-    }
-
     private boolean checkAndIncrementIfTrue(CharChecker checker) {
         boolean value = (index < source.length()) && checker.check(source.charAt(index));
 
