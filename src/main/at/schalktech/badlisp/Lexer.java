@@ -29,9 +29,8 @@ public class Lexer implements Iterator<Token> {
             return null;
 
         //ignore comments
-        if (source.charAt(index) == ';') {
-            while(source.charAt(index) != '\n')
-                index++;
+        if (checkAndIncrementIfTrue(c -> c == ';')) {
+            incrementUntilFalse(c -> c != '\n');
             incrementUntilFalse(Character::isWhitespace);
         }
 
@@ -49,21 +48,17 @@ public class Lexer implements Iterator<Token> {
         }
 
         // filter out one token at a time
-        if (source.charAt(index) == '(') {
-            token = new Token(TokenType.LIST_START, index, index + 1, source);
+        if (checkAndIncrementIfTrue(c -> c == '(')) {
+            token = new Token(TokenType.LIST_START, index - 1, index, source);
+        }
+
+        else if (checkAndIncrementIfTrue(c -> c == ')')) {
+            token = new Token(TokenType.LIST_END, index - 1, index, source);
             index++;
         }
 
-        else if (source.charAt(index) == ')') {
-            token = new Token(TokenType.LIST_END, index, index + 1, source);
-            index++;
-        }
-
-        else if (source.charAt(index) == '"') {
-            int startIndex = index;
-
-            // Avoid looking at the same quote twice
-            index++;
+        else if (checkAndIncrementIfTrue(c -> c == '"')) {
+            int startIndex = index - 1;
 
             incrementUntilFalse((c) -> c != '"');
 
@@ -71,8 +66,8 @@ public class Lexer implements Iterator<Token> {
             index++;
         }
 
-        else if (Character.isDigit(source.charAt(index))) {
-            int startIndex = index;
+        else if (checkAndIncrementIfTrue(Character::isDigit)) {
+            int startIndex = index - 1;
 
             incrementUntilFalse(Character::isDigit);
 
