@@ -2,10 +2,10 @@ package at.schalktech.badlisp;
 
 public class Token {
 
-    private int startPosition;
-    private int endPosition;
-    private TokenType type;
-    private String source;
+    private final int startPosition;
+    private final int endPosition;
+    private final TokenType type;
+    private final String source;
 
     public Token(TokenType type, int start, int end, String source) {
         assert (start >= 0);
