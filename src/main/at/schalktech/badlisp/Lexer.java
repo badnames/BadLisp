@@ -60,7 +60,7 @@ public class Lexer implements Iterator<Token> {
         else if (checkAndIncrementIfTrue(c -> c == '"')) {
             int startIndex = index - 1;
 
-            incrementUntilFalse((c) -> c != '"');
+            incrementUntilFalse(c -> c != '"');
 
             token = new Token(TokenType.STRING, startIndex, index + 1, source);
             index++;
@@ -72,12 +72,12 @@ public class Lexer implements Iterator<Token> {
             incrementUntilFalse(Character::isDigit);
 
             // floating point numbers are also allowed
-            if (checkAndIncrementIfTrue((c) -> c == '.')) {
+            if (checkAndIncrementIfTrue(c -> c == '.')) {
                 incrementUntilFalse(Character::isDigit);
             }
 
             // exponent
-            if (checkAndIncrementIfTrue((c) -> c == 'e')) {
+            if (checkAndIncrementIfTrue(c -> c == 'e')) {
                 incrementUntilFalse(Character::isDigit);
             }
 
