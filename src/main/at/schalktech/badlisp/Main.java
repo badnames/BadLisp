@@ -1,5 +1,8 @@
 package at.schalktech.badlisp;
 
+import at.schalktech.badlisp.parser.lexer.Lexer;
+import at.schalktech.badlisp.parser.lexer.Token;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
