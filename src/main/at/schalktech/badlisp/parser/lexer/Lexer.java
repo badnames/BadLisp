@@ -1,4 +1,4 @@
-package at.schalktech.badlisp;
+package at.schalktech.badlisp.parser.lexer;
 
 import java.util.Iterator;
 

@@ -1,4 +1,4 @@
-package at.schalktech.badlisp;
+package at.schalktech.badlisp.parser.lexer;
 
 public class Token {
 
