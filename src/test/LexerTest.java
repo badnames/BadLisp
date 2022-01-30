@@ -1,6 +1,6 @@
-import at.schalktech.badlisp.Lexer;
-import at.schalktech.badlisp.Token;
-import at.schalktech.badlisp.TokenType;
+import at.schalktech.badlisp.parser.lexer.Lexer;
+import at.schalktech.badlisp.parser.lexer.Token;
+import at.schalktech.badlisp.parser.lexer.TokenType;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

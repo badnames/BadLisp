@@ -7,6 +7,11 @@ import java.nio.file.Path;
 public class Main {
 
     public static void main(String[] args) {
+        if (args.length != 1) {
+            System.err.println("Invalid number of Arguments!");
+            System.exit(1);
+        }
+
 	    Path inputPath = Path.of(args[0]);
 
         String input = "";
