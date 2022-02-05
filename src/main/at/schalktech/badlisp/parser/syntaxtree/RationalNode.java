@@ -29,7 +29,7 @@ public class RationalNode implements SyntaxNode {
 
     @Override
     public void accept(SyntaxNodeVisitor visitor) {
-
+        visitor.visitRationalNode(this);
     }
 
 }
