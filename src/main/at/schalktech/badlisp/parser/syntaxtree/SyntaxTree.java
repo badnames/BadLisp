@@ -78,10 +78,6 @@ public class SyntaxTree {
         }
     }
 
-    public void visitAll(SyntaxNodeVisitor visitor) {
-
-    }
-
     private Optional<Integer> parseInteger(Token token) {
         int number;
 
@@ -104,5 +100,9 @@ public class SyntaxTree {
         }
 
         return Optional.of(number);
+    }
+
+    public void traverse(SyntaxTreeTraverser traverser) {
+        traverser.traverse(root);
     }
 }
