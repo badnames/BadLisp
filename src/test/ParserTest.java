@@ -1,6 +1,6 @@
-import at.schalktech.badlisp.parser.lexer.Token;
-import at.schalktech.badlisp.parser.lexer.TokenType;
-import at.schalktech.badlisp.parser.syntaxtree.*;
+import at.schalktech.badlisp.lexer.Token;
+import at.schalktech.badlisp.lexer.TokenType;
+import at.schalktech.badlisp.parser.*;
 import org.junit.Test;
 
 import java.util.ArrayList;

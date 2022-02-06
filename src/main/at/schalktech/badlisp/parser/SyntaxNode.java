@@ -1,4 +1,4 @@
-package at.schalktech.badlisp.parser.syntaxtree;
+package at.schalktech.badlisp.parser;
 
 public interface SyntaxNode {
     SyntaxNode getChild(int num);

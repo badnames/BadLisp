@@ -1,7 +1,6 @@
-package at.schalktech.badlisp.parser.syntaxtree;
+package at.schalktech.badlisp.parser;
 
-import at.schalktech.badlisp.parser.lexer.Lexer;
-import at.schalktech.badlisp.parser.lexer.Token;
+import at.schalktech.badlisp.lexer.Token;
 
 import java.util.Deque;
 import java.util.Iterator;

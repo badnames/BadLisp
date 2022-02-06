@@ -1,4 +1,4 @@
-package at.schalktech.badlisp.parser.syntaxtree;
+package at.schalktech.badlisp.parser;
 
 public class SymbolNode implements SyntaxNode {
 

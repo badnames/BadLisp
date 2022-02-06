@@ -1,4 +1,4 @@
-package at.schalktech.badlisp.parser.syntaxtree;
+package at.schalktech.badlisp.parser;
 
 public interface SyntaxNodeVisitor {
     void visitListNode(ListNode listNode);

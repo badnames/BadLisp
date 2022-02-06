@@ -1,4 +1,4 @@
-package at.schalktech.badlisp.parser.syntaxtree;
+package at.schalktech.badlisp.parser;
 
 import java.util.LinkedList;
 import java.util.List;

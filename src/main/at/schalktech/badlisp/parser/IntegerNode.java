@@ -1,11 +1,15 @@
-package at.schalktech.badlisp.parser.syntaxtree;
+package at.schalktech.badlisp.parser;
 
-public class StringNode implements SyntaxNode{
+public class IntegerNode implements SyntaxNode {
 
-    private String string;
+    public int value;
 
-    public StringNode(String string) {
-        this.string = string;
+    public IntegerNode(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
     }
 
     @Override
@@ -25,10 +29,6 @@ public class StringNode implements SyntaxNode{
 
     @Override
     public void accept(SyntaxNodeVisitor visitor) {
-        visitor.visitStringNode(this);
-    }
-
-    public String getString() {
-        return string;
+        visitor.visitIntegerNode(this);
     }
 }
