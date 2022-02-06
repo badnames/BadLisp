@@ -4,18 +4,19 @@ import at.schalktech.badlisp.parser.lexer.Lexer;
 import at.schalktech.badlisp.parser.lexer.Token;
 
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Optional;
 
 public class SyntaxTree {
     private SyntaxNode root = new ListNode();
 
-    public SyntaxTree(Lexer lexer) throws SyntaxErrorException {
+    public SyntaxTree(Iterator<Token> tokens) throws SyntaxErrorException {
         Deque<SyntaxNode> treeStack = new LinkedList<>();
         treeStack.push(root);
 
-        while(lexer.hasNext()) {
-            Token token = lexer.next();
+        while(tokens.hasNext()) {
+            Token token = tokens.next();
 
             switch (token.getType()) {
                 case LIST_START -> {
